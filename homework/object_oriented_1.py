@@ -5,11 +5,11 @@ class Playlist:
     
     def add_song(self):
         self.song_count+=1
-        return self.song_count
+       
     
     def remove_song(self):
         self.song_count-=1
-        return self.song_count
+    
     
     def show_info(self):
         print( f"Name of the Playlist:{self.name}  , total of songs:{self.song_count}")
