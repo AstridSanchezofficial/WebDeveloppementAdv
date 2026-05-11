@@ -1,7 +1,12 @@
 from book import Book
 
-book1=("Ux design","Karine Allemand", False)
-book2=("Human-Computing Intercation", "Joseph Collins", True) 
+book1=Book("Ux design","Karine Allemand", False)
+book2=Book("Human-Computing Intercation", "Joseph Collins", True) 
 
-print(book1)
-print( book2)
+
+book1.return_book()
+book1.borrow()
+book1.display_info()
+
+print("----")
+
