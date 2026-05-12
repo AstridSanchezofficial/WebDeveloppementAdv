@@ -15,5 +15,5 @@ class Book:
         if title =="":
              print("Invalid title, try again")
         else:
-            return
+            print("Valid title")
         
