@@ -1,20 +1,13 @@
 from book import Book
 
-book1=Book("Ux design","Karine Allemand", False)
-book2=Book("Human-Computing Intercation", "Joseph Collins", True) 
 
+book1=Book("Ux design","Karine Allemand", False, "Ux design")
+book2=Book("Human-Computing Intercation", "Joseph Collins", True, "Tech") 
+book3=Book("","Oscar Wild",False,"Science Fiction")
 
 book1.return_book()
 book1.borrow()
 book1.display_info()
-
-print("----")
-
-
-book1=Book("Ux design","Karine Allemand", False)
-book2=Book("Human-Computing Intercation", "Joseph Collins", True) 
-book3=Book("","Oscar Wild",False)
-
 #Testing STATIC AND CLASS METHODS
 print(Book.library_name)
 
@@ -26,3 +19,5 @@ print(Book.library_name)
 Book.is_valid_title(book3.title)
 Book.is_valid_title(book2.title)
 
+##Printing book with genre 
+book2.display_info()

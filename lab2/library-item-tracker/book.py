@@ -1,9 +1,10 @@
 class Book:
     library_name="Central Library"
-    def __init__(self,title,author,available):
+    def __init__(self,title,author,available,genre):
         self.title=title
         self.author=author
         self.available=available
+        self.genre=genre
 
     @classmethod
     def change_library_name(cls,new_library):
@@ -23,4 +24,4 @@ class Book:
         self.available=True
     
     def display_info(self):
-        print(f"Title:{self.title}, author:{self.author}, availability:{self.available}")
+        print(f"Title:{self.title}, author:{self.author}, availability:{self.available}, genre:{self.genre}")
