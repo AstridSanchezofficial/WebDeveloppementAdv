@@ -1,9 +1,11 @@
 class Book:
     library_name="Central Library"
+    count=0
     def __init__(self,title,author,available):
         self.title=title
         self.author=author
         self.available=available
+        Book.count+=1
 
     @classmethod
     def change_library_name(cls,new_library):
@@ -24,3 +26,13 @@ class Book:
     
     def display_info(self):
         print(f"Title:{self.title}, author:{self.author}, availability:{self.available}")
+
+    @classmethod
+
+    def show_count(cls):
+        print(f"You have been created {cls.count} books")
+
+    @classmethod
+    def from_string(cls,data):
+        title, author, available=data.split(",")
+        return cls(title,author,available)
