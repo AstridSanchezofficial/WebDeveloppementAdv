@@ -23,4 +23,4 @@ class Book:
         self.available=True
     
     def display_info(self):
-        print(f"Book's name:{self.title}, author:{self.author}, availability:{self.available}")
+        print(f"You are trying to borrow:{self.title}, author:{self.author}, availability:{self.available}")
