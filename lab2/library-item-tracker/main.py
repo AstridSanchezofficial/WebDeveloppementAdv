@@ -1,10 +1,9 @@
 from book import Book
 
+book1=Book("Ux design","Karine Allemand", False, "Ux design")
+book2=Book("Human-Computing Intercation", "Joseph Collins", True, "Tech") 
+book3=Book("","Oscar Wild",False,"Science Fiction")
 
-book1=Book("Ux design","Karine Allemand", False)
-book2=Book("Human-Computing Intercation", "Joseph Collins", True) 
-book3=Book("","Oscar Wild",False)
-print("----")
 book1.return_book()
 book1.borrow()
 book1.display_info()
@@ -21,9 +20,6 @@ print(Book.library_name)
 Book.is_valid_title(book3.title)
 Book.is_valid_title(book2.title)
 
-print("-------")
-Book.show_count()
-
-print("----")
-book4=Book.from_string("Clean Code,Jacobs.S,False")
+##Testing from string
+book4=Book.from_string("Clean code,Joseph.F,True,Tech")
 print(book4.display_info())
