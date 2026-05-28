@@ -36,13 +36,11 @@ class courseSection:
 
     def drop_student(self):
         self.enrolled-=1
+        print(f"One student just dropped the course")
 
     def display_info(self):
        print(f"{self.title} has {self.__enrolled} students enrolled / {self.capacity} spots available") 
 
     
-##Testing class and methods
 
-course1=courseSection("Prototyping II",40,1)
-course1.drop_student()
-course1.display_info()
+

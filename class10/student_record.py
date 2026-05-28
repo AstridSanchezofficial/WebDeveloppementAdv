@@ -32,7 +32,7 @@ class studentRecord:
     def add_credits(self,amount):
         if amount>=0:
             self.__credits+=amount
-            print(f"${amount} credits were added")
+            print(f"{amount} credits were added")
         else:
             raise ValueError('You cannot substract CREDITS')
     
@@ -44,15 +44,15 @@ class studentRecord:
         print(f"{self.name} your current Gpa is : {self.__gpa} and you have {self.credits} credits")
 
 ##Creating studentRecord
-student1=studentRecord("Danielle",2.0,36)
-print(student1.gpa)
+##student1=studentRecord("Danielle",2.0,36)
+###print(student1.gpa)
 ##student1.gpa=7.0 ##-> Tratando de cambiar el gpa pero al llamar al setter la invariant impide que el valor se cambie ya que no cumple con la regla
 ##print(student1.gpa)
 
-student1.update_gpa(3.63)
+##tudent1.update_gpa(3.63)
 ##Adding credits
-student1.add_credits(12)
-student1.display_info()
+##student1.add_credits(12)
+##student1.display_info()
     
 
     
