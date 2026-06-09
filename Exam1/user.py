@@ -20,12 +20,11 @@ class Staff(User):
         self.__employee_id=employee_id
     def display_info(self):
         print(f'User: {self.name} | employee id: {self.__employee_id} | email: {self.email}')
+
+class VipCustomer(Customer):
+    def __init__(self,name,email,customer_id,level):
+        super().__init__(name,email,customer_id)
+        self.level=level
+    def display_info(self):
+        print(f'User: {self.name} |level:{self.level} |customer id: {self._Customer__customer_id} | email: {self.email}')
     
-# user1=User('astrid',"astrid@gmail.com")
-# user1.display_info()
-
-# user2=Customer('Daniela',"dani@gmail.com",1)
-# user2.display_info()
-
-# user3=Staff('Ogenchi',"ogenchi@gmail.ca",2)
-# user3.display_info()

@@ -1,5 +1,5 @@
 from movieshow import MovieShow
-from user import User,Customer,Staff
+from user import User,Customer,Staff,VipCustomer
 from status import ShowStatus
 
 
@@ -9,10 +9,12 @@ from status import ShowStatus
 user1=User("Mathieu","mathieuw@gmail.com")
 customer1=Customer("Daniela","dani@gmail.com",1)
 employee1=Staff("Corey","corey@yahoo.com",2)
+vip1=VipCustomer("Samuel","samuel@bell.ca",3,"gold")
 
 user1.display_info()
 customer1.display_info()
 employee1.display_info()
+vip1.display_info()
 
 # PART 8 
 # Create valid movie Show
