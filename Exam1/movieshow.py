@@ -1,5 +1,6 @@
 from status import ShowStatus
 from user import User,Customer,Staff
+from exceptions import InvalidBookingError,InvalidStatusError,ShowSoldOutError,ShowCancelledError
 # Part 4 - Main Businnes Class
 
 class MovieShow():
@@ -56,7 +57,7 @@ class MovieShow():
     @status.setter
     def status (self,movie_status):
         if not isinstance(movie_status,ShowStatus):
-            raise ValueError ('Enter a valid movie status')
+            raise InvalidStatusError ('Enter a valid movie status')
         else:
             self.__status=movie_status
     @property
@@ -70,13 +71,16 @@ class MovieShow():
             raise ValueError("Quantity must be greater than 0")
 
         if quantity > MovieShow.MAX_TICKETS_PER_BOOKING:
-            raise ValueError(f"Max {MovieShow.MAX_TICKETS_PER_BOOKING} tickets per booking")
+            raise InvalidBookingError(f"Max {MovieShow.MAX_TICKETS_PER_BOOKING} tickets per booking")
 
-        if self.status in (ShowStatus.CANCELLED, ShowStatus.SOLD_OUT):
-            raise ValueError("Cannot book tickets: show unavailable")
+        if self.status == ShowStatus.CANCELLED:
+            raise ShowCancelledError("Cannot book tickets: show cancelled")
+        
+        if self.status == ShowStatus.SOLD_OUT:
+            raise ShowSoldOutError("Cannot book tickets: It is sold out")
 
         if quantity > self.remaining_seats:
-            raise ValueError(f"Only {self.remaining_seats} seats remaining")
+            raise InvalidBookingError(f"Only {self.remaining_seats} seats remaining")
 
         # booking
         self.booked_seats += quantity
