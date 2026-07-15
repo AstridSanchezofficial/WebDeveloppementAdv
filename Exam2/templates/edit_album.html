@@ -37,13 +37,13 @@ content %}
   <p>
     <label for="genre">Genre</label>
 
-    <input
-      id="genre"
-      name="genre"
-      type="text"
-      value="{{ album.genre }}"
-      required
-    />
+    <select id="genre" name="genre" required>
+      <option value="">Choose a genre</option>
+      <option value="Electronic">Electronic</option>
+      <option value="Rock">Rock</option>
+      <option value="Hip-Hop">Hip-Hop</option>
+      <option value="Experimental">Experimental</option>
+    </select>
   </p>
 
   <p>
@@ -63,10 +63,10 @@ content %}
 
     <input
       id="stock"
-      name="quantity"
+      name="stock"
       type="number"
       min="0"
-      value="{{ album.stock }}"
+      value="{{ album.stock}}"
       required
     />
   </p>
