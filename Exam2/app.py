@@ -70,7 +70,7 @@ def index():
             artist=genre
         ).all()
     else:
-        albums = Album.query.all
+        albums = Album.query.all()
 
     return render_template(
         "index.html",
@@ -81,12 +81,12 @@ def index():
 
 @app.route(
     "/albums/add",
-    methods=["GET"]
+    methods=["GET","POST"]
 )
 def add_album():
     if request.method == "POST":
         album = Album(
-            title=request.form["album_name"],
+            title=request.form["title"],
             artist=request.form["artist"],
             genre=request.form["genre"],
             year=request.form["year"],
@@ -96,7 +96,7 @@ def add_album():
         db.session.commit()
 
         return redirect(
-            url_for("albums")
+            url_for("add_album")
         )
 
     return render_template(
