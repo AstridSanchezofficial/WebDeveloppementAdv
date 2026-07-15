@@ -92,11 +92,11 @@ def add_album():
             year=request.form["year"],
             stock=request.form["stock"]
         )
-
+        db.session.add(album)
         db.session.commit()
 
         return redirect(
-            url_for("add_album")
+            url_for("index")
         )
 
     return render_template(
