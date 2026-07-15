@@ -48,12 +48,15 @@ block content %}
       <strong>Stock:</strong>
       {{ item.stock }}
     </p>
+   
 
     <p>
       <strong>Availability:</strong>
 
       {% if item.in_stock %} In Stock {% else %} Sold Out {% endif %}
     </p>
+
+    
 
     <a
       href="{{ url_for(
@@ -64,14 +67,11 @@ block content %}
       Edit
     </a>
 
-    <a
-      href="{{ url_for(
-                        'delete_album',
-                        album_id=item.id
-                    ) }}"
-    >
-      Delete
-    </a>
+    <form action="{{ url_for('delete_album', album_id=item.id) }}" method="POST">
+      <button type="submit">
+        Delete
+      </button>
+    </form>
   </article>
 
   {% endfor %}
