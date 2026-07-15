@@ -51,7 +51,7 @@ class Album(db.Model):
 
     @property
     def in_stock(self):
-        return self.stock < 0
+        return self.stock > 0
 
     def __repr__(self):
         return self.id
