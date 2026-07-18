@@ -18,3 +18,13 @@
                              db.create_all()
 
 - Description :Called app.app_context() to properly initialize the application context and removed the invalid SQLALCHEMY_DATABASE_URL configuration, keeping only SQLALCHEMY_DATABASE_URI.
+
+## BUG 3: Incorrect Flask endpoint names in navigation links
+- Original Code:   <a href="{{ url_for('albums') }}"> All Albums </a>
+- Code after Fixing:     <a href="{{ url_for('index') }}"> All Albums </a>
+
+- Original Code:   <a href="{{ url_for('add') }}"> Add Album </a>
+- Code after Fixing:   <a href="{{ url_for('add_album') }}"> Add Album </a>
+
+- Description: The navigation menu was using incorrect endpoint names in the url_for() function.
+  
