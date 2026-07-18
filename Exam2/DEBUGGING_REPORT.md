@@ -50,5 +50,30 @@
         )
         db.session.add(album)
         db.session.commit()```
--Description: At the beginning we were not adding the album object in our database, we were just commiting changes to something that was not even added
-  
+- Description: : The album object was not added to the database session before calling db.session.commit(), so no new album was saved
+## BUG 5: fix: correct HTTP method for delete endpoint
+
+- Original code:```@app.route(
+    "/albums/<int:album_id>/delete",
+    methods=["GET"]```
+- Code after fizxing it:```@app.route(
+    "/albums/<int:album_id>/delete",
+    methods=["POST"]```
+- Description:The album deletion route was configured to accept GET requests instead of POST. Since deleting a resource changes application data, the route should only accept POST requests to follow HTTP conventions and prevent unintended deletions.
+
+## BUG 6: Filter albums by   genre instead of artist
+- Original code: ```if genre:
+    albums = Album.query.filter_by(
+        artist=genre
+    ).all()
+else:
+    albums = Album.query.all()```
+- Code after fixing it:```if genre:
+    albums = Album.query.filter_by(
+        genre=genre
+    ).all()
+else:
+    albums = Album.query.all()```
+- Description The album filtering logic was using the artist field instead of the genre field when filtering by the selected genre. As a result, the query returned incorrect results because it compared the genre value against the artist column.
+
+
