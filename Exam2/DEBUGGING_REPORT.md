@@ -51,7 +51,7 @@
         db.session.add(album)
         db.session.commit()```
 - Description: : The album object was not added to the database session before calling db.session.commit(), so no new album was saved
-## BUG 5: fix: correct HTTP method for delete endpoint
+## BUG 5: Correct HTTP method for delete endpoint
 
 - Original code:```@app.route(
     "/albums/<int:album_id>/delete",
