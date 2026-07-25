@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %} Home | Book Shelf {% endblock %} 
+    {%block content %}
+    <h1>📖 Book Shelf</h1>
+
+    <p>  Book Shelf is a personal reading list application designed to help users organize, manage, and track their reading journey by keeping all their favorite books in one place. </p> 
+
+    {% if not current_user.is_authenticated %}
+    <p>Click the button to join the family! </p>
+    <a href="{{ url_for('register') }}" class="btn"> Create an account </a>
+
+    {% else %}
+    <a href="{{  url_for('dashboard') }}" class="btn"> See your reading list </a>
+
+    {% endif %}
+    
+    {% endblock %}
