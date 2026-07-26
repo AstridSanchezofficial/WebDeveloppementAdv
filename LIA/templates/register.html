@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+
+<h1>Create Account</h1>
+<form method="POST">
+    <div class="input-container">
+        <label for="username">Username</label>
+        <input
+        id="'username"
+        name="username"
+        type="text"
+        maxlenght="50"
+        value="{{username or ''}}"
+        required
+        />
+    </div>
+
+     <div class="input-container">
+        <label for="email">Email</label>
+        <input
+        id="email"
+        name="email"
+        type="text"
+        maxlenght="80"
+        value="{{email or ''}}"
+        required
+        />
+    </div>
+
+
+
+    <div class="input-container">
+        <label for="password">Password</label>
+        <input
+        id="password"
+        name="password"
+        type="text"
+        minlength="8"
+        maxlenght="20"
+        required
+        />
+    </div>
+    <button class="btn" type="submit">Create account</button>
+</form>
+{% endblock %}

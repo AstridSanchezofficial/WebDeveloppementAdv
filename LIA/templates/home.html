@@ -5,6 +5,17 @@
 
     {% block content %}
     <h1> Book Shelf App</h1>
-    <h2>Welcome to book shelf App!</h2>
+    <h2>Join the family!</h2>
     <p> Book Shelf is an app that helps readers keep track of their current reads and plan their future reading.</p>
+    
+    {% if current_user.is_authenticated %}
+    <a href="{{url_for('dashboard')}}">See my reading list</a>
+    {% else %}
+    <p>Click the button to join the family!</p>
+    <a href="{{url_for('register')}}" class="btn">Create an account</a>
+
+    {% endif %}
+    
     {% endblock %}
+
+  

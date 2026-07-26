@@ -23,11 +23,48 @@
                     <i class="bi bi-book"></i>
                     <a href="{{url_for('home')}}">Book shelf app</a>
                 </div>
+                {% if not current_user.is_authenticated %}
+                <div>
+                    <a href="{{url_for('register')}} ">Create Account</a>
+                    <a href="{{url_for('login')}}">Log in</a>
+                </div>
+              
+                {% else %}
+                    <a href="{{url_for('dashboard')}}">My books</a>
+                    <form action="{{url_for('logout')}}" method="POST">
+                        <button type="submit">Log out</button>
+                    </form>
+                   
+                {% endif %}
+            </div>
         </nav>
-
+        
     </header>
 
     <main>
+
+         {% with messages =
+            get_flashed_messages(
+                with_categories=true
+                )
+                %}
+                {% if messages %}
+                <section class="flash-section">
+                    <div class="container">
+                        <div class="flash-messages">
+                            {% for category, message
+                                in messages
+                            %}
+                                <p class="flash {{ category }}">
+                                    {{ message }}
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+                {% endif %}
+        {% endwith %}
+
         <section>
             <div class="container">
                 {% block content %}
