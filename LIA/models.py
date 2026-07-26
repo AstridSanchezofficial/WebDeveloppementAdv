@@ -35,12 +35,12 @@ class User(db.Model,UserMixin):
     )
     #Method 1 -Hashing password (En lugar de guardarla tal cual va a crear una version cifrada de la contrasena)
     def set_password(self,password):
-        self.password_hash=generate_password_hash(password)
+        self.password=generate_password_hash(password)
 
     #Method 2 When the user log in it will check if the password is the same when they created the account 
 
     def check_password(self, password):
-        return check_password_hash(self.password_hash,password)    
+        return check_password_hash(self.password,password)    
 
     #Method 3 
 
