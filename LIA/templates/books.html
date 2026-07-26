@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Welcome {{ current_user.username }}</h1>
+
+<a id="add_book" class="btn" href="{{ url_for('add_book') }}">
+    Add book
+</a>
+
+
+{% if not books %}
+
+    <h2>You have not added any books yet.</h2>
+
+{% else %}
+
+    <h2>Here is your list of books:</h2>
+
+    <div class="books-container">
+
+        {% for book in books %}
+
+            <div class="book-card">
+
+                <h3>{{ book.title }}</h3>
+
+                <p>
+                    <strong>Author:</strong> {{ book.author }}
+                </p>
+
+                <p>
+                    <strong>Reading status:</strong> {{ book.reading_status }}
+                </p>
+
+
+                <div class="note">
+
+                    <p><strong>Personal note:</strong></p>
+
+                    {% if book.note %}
+                        <p>{{ book.note }}</p>
+                    {% else %}
+                        <p class="empty-note">
+                            This book has no personal note.
+                        </p>
+                    {% endif %}
+
+                </div>
+
+
+                <div class="buttons-div">
+
+                    <a 
+                        class="btn"
+                        href="{{ url_for(
+                            'book_edit',
+                            book_id=book.id
+                        ) }}">
+                        Edit
+                    </a>
+
+
+                    <form 
+                        action="{{ url_for(
+                            'book_delete',
+                            book_id=book.id
+                        ) }}" 
+                        method="POST">
+
+                        <button class="btn" type="submit">
+                            Delete
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endif %}
+
+{% endblock %}

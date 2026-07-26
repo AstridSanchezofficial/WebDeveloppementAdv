@@ -1,0 +1,38 @@
+{% extends "base.html" %} 
+{% block title %}
+ Edit Book 
+{% endblock %} 
+{%block content %}
+    <h1> {{ book.title }} by {{ book.author }} </h1>
+
+    <form method="POST">
+        <div class="input-container">
+            <label for="note"> note </label>
+            
+            <textarea 
+            name="note" 
+            id="note"
+            maxlength="1000"
+            placeholder="Maximum of 1000 characters"
+            rows="5"
+            >{% if note %}{{ note }}{% elif book.note %}{{ book.note }}{% endif %}</textarea>
+        </div>
+
+        <div class="input-container">
+            <label for="status"> Reading Status </label>
+
+            <select name="status" id="status" required>
+                <option value=""> Select Reading Status </option>
+                {% for option in status_options %}
+                {% if option == book.reading_status %}
+                <option value="{{ option }}" selected>{{ option }}</option>
+                {% else %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <button  class="btn" type="submit">Save changes</button>
+    </form>
+{% endblock %}

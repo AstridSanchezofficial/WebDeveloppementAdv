@@ -30,10 +30,13 @@
                 </div>
               
                 {% else %}
-                    <a href="{{url_for('dashboard')}}">My books</a>
-                    <form action="{{url_for('logout')}}" method="POST">
-                        <button type="submit">Log out</button>
-                    </form>
+                    <div class="nav-user">
+                        <a href="{{url_for('dashboard')}}">My books</a>
+                        <form action="{{url_for('logout')}}" method="POST">
+                            <button class= "btn" type="submit">Log out</button>
+                        </form>
+                    </div>
+                    
                    
                 {% endif %}
             </div>

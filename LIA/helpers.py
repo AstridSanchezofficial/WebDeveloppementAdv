@@ -1,4 +1,4 @@
-from models import db,User
+from models import db,User,Book
 from flask import flash
 
 def find_user(username):
@@ -66,3 +66,46 @@ def flash_errors(errors):
     for error_msg in errors:
         flash(error_msg, "error")
         print(error_msg)
+
+
+# BOOK VALIDATION
+def find_book(user_id, book_id):
+    return Book.query.filter_by(user_id=user_id, id=book_id).one_or_404(description=f"No book with the id '{book_id}'.")
+def validate_input(input, inputType):
+    input_errors = []
+
+    if not input:
+        input_errors.append(f"{inputType.capitalize()} is a required field")
+    
+    if len(input) > 100:
+        input_errors.append(f"{inputType.capitalize()} cannot be longer than 100 characters")
+    
+    if not input_errors:
+        return None
+    
+    return input_errors
+
+def validate_note(note):
+    if len(note) > 1000:
+        return [f"Your note cannot be longer than 1000 characters"]
+    
+    return None
+
+
+reading_status = [
+    "Want to read",
+    "Reading",
+    "Finished"
+]
+
+def validate_reading_status(status):
+    if not status in reading_status:
+        return ["Reading status must be an option from the selection menu"]
+    
+    return None
+
+def flash_errors(errors):
+    for error in errors:
+        for error_msg in error:
+            flash(error_msg, "error")
+            print(error_msg)
